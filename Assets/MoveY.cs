@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveX : MonoBehaviour
+public class MoveY : MonoBehaviour
 {
-    float mDelta = 0.01f;
-
     private void Awake()
     {
         Debug.Log("Awake on: " + gameObject.name);
@@ -21,13 +19,15 @@ public class MoveX : MonoBehaviour
     void Update()
     {
         Vector3 p = transform.position;
-        p.x += mDelta;
+        p.x += 0.0001f;
         transform.position = p;
-    }
 
-    public void dDelta(float d)
-    {
-        mDelta += d;
+        GameObject g = GameObject.Find("Cube");
+        MoveX m = g.GetComponent<MoveX>();
+        if (m != null)
+        {
+            m.dDelta(-0.001f);
+        }
     }
 }
 
